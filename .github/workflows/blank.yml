@@ -5,7 +5,7 @@ name: CI
 # Controls when the workflow will run
 on:
 
-  
+
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -29,5 +29,12 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+           # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
 
       
